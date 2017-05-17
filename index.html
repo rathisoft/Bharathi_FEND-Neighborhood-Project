@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>HSR Layout Neighborhood Map</title>
+    <meta name="description" content="Neighborhood Map">
+    <meta name="author" content="Bharathi Athinarayanan">
+    <meta name="viewport" content="width=device-width">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvk1Pq-lCGxLgns8_0wQKYtnC6_zVckEc"></script>
+    <script src="js/knockout-3.4.0.js"></script>
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:100,400" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="title-outer col-xs-12">
+            <div class="row">
+                <div class="titlebar col-xs-12">
+                    <h3>HSR Layout Neighborhood Restaurant Map</h3>
+                    <div>Search:
+                        <input class="search-field" data-bind="textInput: searchReq">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="map-outer col-xs-12">
+            <div class="row">
+                <div class="sidebar col-xs-3">
+                    <p>Locations:</p>
+                    <div class="loc-list" data-bind="foreach: filteredMarkers">
+                        <button data-bind="text: title, click: myMarkers.toggleBounce"></button>
+                        <br>
+                    </div>
+                </div>
+                <!--sidebar-->
+
+                <div class="map-container col-xs-8"> </div>
+
+            </div>
+            <!--row-->
+        </div>
+        <!--map-outer-->
+    </div>
+    <!--container-->
+
+    <script src="js/scripts.js"></script>
+
+</body>
+
+</html>

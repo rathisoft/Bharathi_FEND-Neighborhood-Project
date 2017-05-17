@@ -1,0 +1,61 @@
+body {
+  background-color: #ccc;
+  height: 100%
+
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.map-outer {
+  height: 100%;
+  padding: 20px;
+  border: 2px solid #ccc;
+  margin-bottom: 20px;
+  background-color: #f39055;
+  background-blend-mode: color-burn;
+  background: -webkit-linear-gradient(#f39055, #fff);
+  background: -o-linear-gradient(#f39055, #fff);
+  background: -moz-linear-gradient(#f39055, #fff);
+  background: linear-gradient(#f39055, #fff);
+  color: blue
+}
+
+.map-container {
+  height: 700px
+}
+
+.titlebar {
+
+  font-family: 'Josefin Sans', calibri;
+  text-align: center;
+  padding: 40px;
+  border: 2px solid #ccc;
+  background-color: #f39055;
+  background-blend-mode: color-dodge;
+  background: -webkit-radial-gradient(#f39055, #fff);
+  background: -o-radial-gradient(#f39055, #fff);
+  background: -moz-radial-gradient(#f39055, #fff);
+  background: radial-gradient(#f39055, #fff);
+  color: blue
+
+}
+
+.search-field {
+  color: blue;
+}
+
+button {
+  font-family: 'Josefin Sans', calibri;
+  margin: 0;
+  padding: 0;
+  height: 40px;
+  width: 80%;
+  border-radius: 7px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  vertical-align: middle
+}
+
+
