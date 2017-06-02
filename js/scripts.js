@@ -126,7 +126,7 @@ var startApp = function() // callback function - being called by index.html
                         console.log('location.address: ', location.address, 'for Location:', location.title);
                         */
                         location.marker.setAnimation(google.maps.Animation.DROP);
-                        console.log('Status code: ', status, 'for Location:', location.title);
+                        //console.log('Status code: ', status, 'for Location:', location.title);
                     } else if (status === 'OVER_QUERY_LIMIT') {
                         // If status is OVER_QUERY_LIMIT, then wait and re-request
                         //console.log("in over limit");
@@ -150,10 +150,10 @@ var startApp = function() // callback function - being called by index.html
 
             //Adds infowindows to each marker and populates them with Zomato API request data
             self.setBubble = function(index) {
-                console.log('Index data:', index);
+                //console.log('Index data:', index);
                 //Add event listener to each map marker to trigger the corresponding infowindow on click
                 var zomatoMember = members[index];
-                console.log('Zomatoa Index data:', zomatoMember);
+                //console.log('Zomatoa Index data:', zomatoMember);
                 google.maps.event.addListener(zomatoMember.marker, 'click', function() {
                     //Adding animation - when clicked on marker
                     if (zomatoMember.marker.getAnimation() !== null) {
@@ -165,10 +165,10 @@ var startApp = function() // callback function - being called by index.html
                         }, 1400); //Two bounces i.e 700*2
                     }
 
-                    console.log('Member Index before Zomato URL:', zomatoMember);
+                    //console.log('Member Index before Zomato URL:', zomatoMember);
                     var zomatoURL = 'https://developers.zomato.com/api/v2.1/restaurant?res_id=' + zomatoMember.id + '&apikey=' + zomatoApiKey;
-                    console.log('Zomato URL data:', zomatoURL);
-                    console.log('zomatoMember.id before JSON:', zomatoMember.id);
+                    //console.log('Zomato URL data:', zomatoURL);
+                    //console.log('zomatoMember.id before JSON:', zomatoMember.id);
                     $.getJSON(zomatoURL).done(function(data) {
                         /*          Commentting out Debug code
                                         console.log('zomatoMember.id iside JSON:', zomatoMember.id);

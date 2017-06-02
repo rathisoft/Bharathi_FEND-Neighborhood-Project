@@ -18,35 +18,35 @@
 
 <body>
 
-    <div class="container">
-        <div class="title-outer col-xs-12">
-            <div class="row">
-                <div class="titlebar col-xs-12">
+    <nav class="container">
+        <nav class="title-outer col-xs-12">
+            <nav class="row">
+                <nav class="titlebar col-xs-12">
                     <h3>HSR Layout Neighborhood Restaurant Map</h3>
-                    <div>Search:
+                    <nav>Search:
                         <input class="search-field" data-bind="textInput: searchReq">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="map-outer col-xs-12">
-            <div class="row">
-                <div class="sidebar col-xs-3">
+                    </nav>
+                </nav>
+            </nav>
+        </nav>
+        <nav class="map-outer col-xs-12">
+            <nav class="row">
+                <nav class="sidebar col-xs-3">
                     <p>Locations:</p>
-                    <div class="loc-list" data-bind="foreach: filteredMarkers">
+                    <nav class="loc-list" data-bind="foreach: filteredMarkers">
                         <button data-bind="text: title, click: $root.toggleBounce"></button>
                         <br>
-                    </div>
-                </div>
+                    </nav>
+                </nav>
                 <!--sidebar-->
 
-                <div class="map-container col-xs-8"> </div>
+                <nav class="map-container col-xs-8"> </nav>
 
-            </div>
+            </nav>
             <!--row-->
-        </div>
+        </nav>
         <!--map-outer-->
-    </div>
+    </nav>
     <!--container-->
 
     <script src="js/knockout-3.3.0.js"></script>
