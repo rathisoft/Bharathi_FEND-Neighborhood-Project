@@ -17,7 +17,8 @@ It can recalibrate itself based on your screen size -- try resizing the window! 
 
 # How To Use:
 
-1. Launch the site - https://rathisoft.github.io/Bharathi_FEND-Neighborhood-Project/
+1. Web Launch by going to  - https://rathisoft.github.io/Bharathi_FEND-Neighborhood-Project/
+2. Local Launch by opening the "index.html"
 2. Click on any of the places on the map / sidebar for more information
 3. Type in the white bar if you only want to see a few of the places listed on the map to make it easier to spot.
 

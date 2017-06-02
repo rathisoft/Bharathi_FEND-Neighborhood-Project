@@ -1,10 +1,12 @@
+var startApp = function()
+{
 "use strict";
 
 //Error handling - checks if Google Maps has loaded
-if (!window.google || !window.google.maps) {
+/*if (!window.google || !window.google.maps) {
     $('#map-container').text('Grrr: Google Maps data could not be loaded');
     $('#map-list').text('Grrr: Google Maps data could not be loaded');
-}
+}*/
 
 // --------- MODEL ---------------
 
@@ -45,7 +47,20 @@ var markersModel = [
             position: new google.maps.LatLng(0, 0),
             icon: "img/pins/restaurant.png"
         })
-    }, {
+    },
+{
+        id: "51015",
+        title: "The Punjabi Rasoi",
+        category: "restaurant",
+        address: "1082, 18th Cross, 3rd Sector, HSR, Bangalore",
+        //    url: "",
+        status: ko.observable("OK"),
+        marker: new google.maps.Marker({
+            position: new google.maps.LatLng(0, 0),
+            icon: "img/pins/restaurant.png"
+        })
+    },
+    {
         id: "57099",
         title: "Empire Restaurant",
         category: "restaurant",
@@ -150,13 +165,22 @@ var resultMarkers = function(members) {
         var zomatoMember = members[index];
         console.log('Zomatoa Index data:', zomatoMember);
         google.maps.event.addListener(zomatoMember.marker, 'click', function() {
+        //Adding animation - when clicked on marker
+            if (zomatoMember.marker.getAnimation() !== null) {
+            zomatoMember.marker.setAnimation(null);
+            } else {
+            zomatoMember.marker.setAnimation(google.maps.Animation.BOUNCE);
+            setTimeout(function() {
+                zomatoMember.marker.setAnimation(null);
+            }, 1400); //Two bounces i.e 700*2
+            }
 
             console.log('Member Index before Zomato URL:', zomatoMember);
             var zomatoURL = 'https://developers.zomato.com/api/v2.1/restaurant?res_id=' + zomatoMember.id + '&apikey=' + zomatoApiKey;
             console.log('Zomato URL data:', zomatoURL);
             console.log('zomatoMember.id before JSON:', zomatoMember.id);
             $.getJSON(zomatoURL).done(function(data) {
-                //$.getJSON(zomatoURL).done(function(data){
+
                 console.log('zomatoMember.id iside JSON:', zomatoMember.id);
                 console.log('Member Index after Zomato URL:', zomatoMember);
                 console.log('Member Title after Zomato URL:', zomatoMember.title);
@@ -169,15 +193,17 @@ var resultMarkers = function(members) {
                     "<p>" + data.location.address + "</p>" +
                     "<p> <strong> Zomato Rating: </strong>" + data.user_rating.aggregate_rating + "<strong> Feel factor: </strong>" + data.user_rating.rating_text + "</p>" +
                     "<img src='" + data.thumb + "' alt = 'Image not loaded' style='width:50%'>" +
-                    "<p> <a href='" + data.order_url + "'>" + "Order food </a>|<a href='" + data.url + "'>" + "Read more...</a>" + "</p>"
+                    "<p> <a href='" + data.menu_url + "'>" + "Menu </a>|<a href='" + data.url + "'>" + "Read more...</a>" + "</p>"
                 console.log('restaurant name in content window :', data.name);
                 console.log('restaurant rating in content window :', data.user_rating.aggregate_rating);
                 console.log('restaurant url in content window :', data.url);
+                console.log('restaurant order url in content window :', data.menu_url);
                 "</div>";
                 self.infowindow.setContent(contentString);
             });
 
             self.infowindow.open(self.map, zomatoMember.marker);
+
             //console.log('Infowindow open - Member Index  for Location:', zomatoMember);
         });
     };
@@ -199,11 +225,19 @@ var resultMarkers = function(members) {
             currentMarker.marker.setAnimation(google.maps.Animation.BOUNCE);
             setTimeout(function() {
                 currentMarker.marker.setAnimation(null);
-            }, 2000); //bounce for 2000 ms
+            }, 1400); ////Two bounces i.e 700*2
         }
     };
 };
 
+
 var myMarkers = new resultMarkers(markersModel);
 ko.applyBindings(myMarkers);
 google.maps.event.addDomListener(window, 'load', myMarkers.initialize);
+
+
+function errorHandling() {
+    alert("Google Maps has failed to load. Please check your internet connection and try again.");
+};
+
+};
