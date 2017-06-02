@@ -8,7 +8,9 @@ Included is a list of my favorite restaurants  in the HSR Layout Neighborhood of
 
 The app allows you to filter the list down as you type. In return, it displays the locations on the map.
 
-There's also extra info pulled from Zomato where available. This includes rating and address of the restaurant and also an option to order food online.
+Information also includes rating and address of the restaurant and also an option to check their menu.
+
+All the info about the restaurant are provided live by the API of Zomato.com and thanks to them for providing the same.
 
 The app is responsive, too! It resizes using CSS Flexbox and media queries.
 
