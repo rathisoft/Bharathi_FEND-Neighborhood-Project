@@ -2,7 +2,6 @@ var startApp = function() // callback function - being called by index.html
     {
         "use strict";
 
-
         // --------- MODEL ---------------
 
         var markersModel = [
@@ -208,27 +207,26 @@ var startApp = function() // callback function - being called by index.html
             };
 
             //Toggle bounce animation for map marker on click of Location list button (via data-binding)
+
             self.toggleBounce = function(currentMarker) {
-                if (currentMarker.marker.getAnimation() !== null) {
-                    currentMarker.marker.setAnimation(null);
-                } else {
+                google.maps.event.trigger(currentMarker.marker, 'click');
+                //console.log('Location clicked');
                     self.map.setCenter(currentMarker.marker.position); //center map on bouncing marker
                     currentMarker.marker.setAnimation(google.maps.Animation.BOUNCE);
+                    //console.log('Infowindow bouncing');
                     setTimeout(function() {
                         currentMarker.marker.setAnimation(null);
                     }, 1400); ////Two bounces i.e 700*2
-                }
             };
-        };
 
+
+        };
 
         var myMarkers = new resultMarkers(markersModel);
         ko.applyBindings(myMarkers);
         google.maps.event.addDomListener(window, 'load', myMarkers.initialize);
+    };
 
-
-        function errorHandling() {
+      function errorHandling() {
             alert("Google Maps has failed to load. Please check your internet connection and try again.");
         }
-
-    };
