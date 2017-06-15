@@ -186,7 +186,9 @@ var startApp = function () // callback function - being called by index.html
                     */
                     "</div>";
                     self.infowindow.setContent(contentString);
-                });
+                }).fail(function() {
+                    alert("Grrr! There was an error with the Zomato API call. Please refresh and try again.");
+                        });
 
                 self.infowindow.open(self.map, zomatoMember.marker);
                 //console.log('Infowindow open - Member Index  for Location:', zomatoMember);
