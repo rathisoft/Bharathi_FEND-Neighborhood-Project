@@ -98,14 +98,10 @@ var startApp = function() // callback function - being called by index.html
                 });
                 //Iterate thru results, set animation timeout for each
                 var arrayLen = arrayResults.length;
+                 //var myFunction = function(){};
+                 //console.log('myFunction created ...');
                 for (var j = 0; j < arrayLen; j++) {
-                    (function f() {
-                        var current = j;
-                        var animTimer = setTimeout(function() {
-                            arrayResults[current].marker.setMap(self.map);
-                        }, j * 300);
-                        arrayResults[current].timer = animTimer;
-                    }());
+                    arrayResults[j].marker.setMap(self.map);
                 }
                 //Return list of locations that match search request, for button list
                 return arrayResults;
@@ -210,12 +206,10 @@ var startApp = function() // callback function - being called by index.html
 
             self.toggleBounce = function(currentMarker) {
                 google.maps.event.trigger(currentMarker.marker, 'click');
-                //console.log('Location clicked');
-                    self.map.setCenter(currentMarker.marker.position); //center map on bouncing marker
-                    currentMarker.marker.setAnimation(google.maps.Animation.BOUNCE);
-                    //console.log('Infowindow bouncing');
-                    setTimeout(function() {
-                        currentMarker.marker.setAnimation(null);
+                self.map.setCenter(currentMarker.marker.position); //center map on bouncing marker
+                currentMarker.marker.setAnimation(google.maps.Animation.BOUNCE);
+                setTimeout(function() {
+                currentMarker.marker.setAnimation(null);
                     }, 1400); ////Two bounces i.e 700*2
             };
 
